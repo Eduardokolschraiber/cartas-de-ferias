@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartas de Férias</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background-color: #fdfdfc;
+      color: #333;
+      margin: 0;
+      padding: 0 1rem;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding-bottom: 4rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      text-align: center;
+      margin-top: 2rem;
+      color: #555;
+      font-style: italic;
+    }
+    .carta {
+      margin: 3rem 0;
+      padding: 2rem;
+      border-top: 1px solid #ccc;
+    }
+    .titulo {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .assinatura {
+      margin-top: 2rem;
+      text-align: right;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>"Enquanto você vive suas férias, eu escrevo nossa saudade."</h1>
+
+    <div class="carta">
+      <div class="titulo">Cartinha 1 — O começo das férias</div>
+      <p>Minha princesa,</p>
+      <p>Hoje você começa suas férias... e eu começo minha contagem regressiva até te ver de novo. Já estou morrendo de saudade, e ainda nem é meio-dia! Que esses dias sejam lindos, leves, cheios de risadas e momentos bons. Aproveita cada segundo, vive intensamente — mas guarda um espacinho aí dentro pra pensar em mim de vez em quando.</p>
+      <p>Vou sentir falta do seu cheirinho, do seu sorriso e até da forma como você me olha quando está com sono. É, amor... vai ser difícil, mas eu fico feliz por você poder descansar. E mais feliz ainda por saber que, quando voltar, vai ter um abraço meu te esperando.</p>
+      <p class="assinatura">Do seu Edu</p>
+    </div>
+
+    <!-- Mais cartas serão inseridas aqui em seguida -->
+  </div>
+</body>
+</html>
