@@ -1,4 +1,4 @@
-<!index.html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
@@ -29,6 +29,7 @@
       margin: 3rem 0;
       padding: 2rem;
       border-top: 1px solid #ccc;
+      display: none;
     }
     .titulo {
       font-weight: bold;
@@ -57,5 +58,21 @@
 
     <!-- Mais cartas serão inseridas aqui em seguida -->
   </div>
+
+  <script>
+    const cartas = document.querySelectorAll('.carta');
+    const dataInicio = new Date('2025-04-15'); // primeiro dia de férias dela
+    const hoje = new Date();
+
+    // zera hora pra comparar apenas a data
+    dataInicio.setHours(0, 0, 0, 0);
+    hoje.setHours(0, 0, 0, 0);
+
+    const diasPassados = Math.floor((hoje - dataInicio) / (1000 * 60 * 60 * 24));
+
+    for (let i = 0; i <= diasPassados && i < cartas.length; i++) {
+      cartas[i].style.display = 'block';
+    }
+  </script>
 </body>
 </html>
