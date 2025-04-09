@@ -42,6 +42,16 @@
       text-align: right;
       font-style: italic;
     }
+    .navegacao {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .navegacao button {
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -56,23 +66,53 @@
       <p class="assinatura">Do seu Edu</p>
     </div>
 
-    <!-- Mais cartas serão inseridas aqui em seguida -->
+    <div class="carta">
+      <div class="titulo">Cartinha 2 — O segundo dia</div>
+      <p>Oi, meu amor!</p>
+      <p>Já é o segundo dia e eu sigo firme aqui, segurando a saudade com carinho. Como foi o seu primeiro dia de descanso? Espero que tenha sido leve, com céu bonito e sorriso no rosto.</p>
+      <p>Você merece cada segundo dessa pausa. E eu? Eu sigo por aqui, pensando em você e contando os dias. Aproveita por nós dois, tá?</p>
+      <p class="assinatura">Com amor, Edu</p>
+    </div>
+
+    <div class="carta">
+      <div class="titulo">Cartinha 3 — Pensando em você</div>
+      <p>Meu bem,</p>
+      <p>Hoje sonhei com você. Daqueles sonhos bons que a gente acorda sorrindo. É engraçado como você aparece até quando fecho os olhos. Já sinto sua falta até nas pequenas coisas, como te ouvir contar como foi seu dia.</p>
+      <p>Continua curtindo, descansando, sendo feliz. E lembra sempre: tem alguém aqui te esperando com todo amor do mundo.</p>
+      <p class="assinatura">Sempre seu, Edu</p>
+    </div>
+
+    <div class="navegacao">
+      <button onclick="mostrarCartaAtual(-1)">&larr; Carta anterior</button>
+      <button onclick="mostrarCartaAtual(1)">Próxima carta &rarr;</button>
+    </div>
   </div>
 
   <script>
     const cartas = document.querySelectorAll('.carta');
-    const dataInicio = new Date('2025-04-15'); // primeiro dia de férias dela
+    const dataInicio = new Date('2025-04-15');
     const hoje = new Date();
-
-    // zera hora pra comparar apenas a data
     dataInicio.setHours(0, 0, 0, 0);
     hoje.setHours(0, 0, 0, 0);
-
     const diasPassados = Math.floor((hoje - dataInicio) / (1000 * 60 * 60 * 24));
 
-    for (let i = 0; i <= diasPassados && i < cartas.length; i++) {
-      cartas[i].style.display = 'block';
+    let cartaVisivel = 0;
+
+    function atualizarCartas() {
+      cartas.forEach((carta, index) => {
+        carta.style.display = index === cartaVisivel && index <= diasPassados ? 'block' : 'none';
+      });
     }
+
+    function mostrarCartaAtual(direcao) {
+      const novaIndex = cartaVisivel + direcao;
+      if (novaIndex >= 0 && novaIndex <= diasPassados && novaIndex < cartas.length) {
+        cartaVisivel = novaIndex;
+        atualizarCartas();
+      }
+    }
+
+    atualizarCartas();
   </script>
 </body>
 </html>
