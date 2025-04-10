@@ -21,48 +21,10 @@
       color: white;
     }
 
-    .header img {
-      width: 100%;
-      max-height: 450px;
-      object-fit: cover;
-      opacity: 0.7;
-    }
-
-    .header .texto-superior {
-      position: absolute;
-      top: 30%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: 'Great Vibes', cursive;
-      color: white;
-      font-size: 2rem;
-      font-style: normal;
-      max-width: 90%;
-      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
-    }
-
-    .header .poesia {
-      position: absolute;
-      bottom: 8%;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      font-style: italic;
-      color: white;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-      max-width: 90%;
-    }
-
-    .tela-principal {
-      text-align: center;
-      margin-top: 40px;
-    }
-
     .carrossel {
       position: relative;
       max-width: 360px;
-      margin: 0 auto 20px auto;
+      margin: 0 auto;
       overflow: hidden;
       border: 4px solid #fff;
       border-radius: 16px;
@@ -81,6 +43,32 @@
 
     .imagem-capa.active {
       display: block;
+    }
+
+    .texto-superior {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+      padding: 0 10px;
+    }
+
+    .poesia {
+      position: absolute;
+      bottom: 8%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: white;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+      padding: 0 10px;
+      max-width: 90%;
     }
 
     .container {
@@ -124,9 +112,9 @@
   </style>
 </head>
 <body>
-  <div class="tela-principal">
+  <div class="header">
     <div class="carrossel">
-      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/12fe05a2-b5e3-4510-8f3c-4688c0fa848a.jpg" alt="">
+      <img class="imagem-capa active" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/12fe05a2-b5e3-4510-8f3c-4688c0fa848a.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/1e9796fc-646c-4693-ac0f-772839652d16.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/217855ae-fa67-4062-b47a-58f3cad3c109.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/34bd3f19-1e26-46ee-86a2-7bf6f4faf4cb.jpg" alt="">
@@ -140,9 +128,9 @@
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/d4aa7af9-f0a7-44bb-8c59-fe968ae6f1e6.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/e914506e-5b88-45d6-af7b-ae65a676c27c.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/fe3c04cf-edf8-4ba0-8b4a-1ab179dae43a.jpg" alt="">
-      <div class="texto-superior">Enquanto você vive suas férias, eu escrevo nossa saudade.</div>
-      <div class="poesia">"Saudade é o que fica de um amor que o tempo não leva." — Carlos Drummond de Andrade</div>
     </div>
+    <div class="texto-superior">Enquanto você vive suas férias, eu escrevo nossa saudade.</div>
+    <div class="poesia">"Saudade é o que fica de um amor que o tempo não leva." — Carlos Drummond de Andrade</div>
   </div>
 
   <div class="container">
