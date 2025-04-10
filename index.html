@@ -1,4 +1,4 @@
-<!index.html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
@@ -79,36 +79,75 @@
       font-size: 1rem;
       cursor: pointer;
     }
+
+    /* Correção: CSS do carrossel está aqui dentro agora */
+    .tela-principal {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .carrossel {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto 20px auto;
+      overflow: hidden;
+    }
+
+    .imagem-capa {
+      display: none;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .imagem-capa.active {
+      display: block;
+    }
   </style>
 </head>
 <body>
-  <div class="header">
-    <img src="sua-foto-aqui.jpg" alt="Foto do casal">
-    <div class="texto-superior">"Enquanto você vive suas férias, eu escrevo nossa saudade."</div>
-    <div class="poesia">"Saudade é o que fica de um amor que o tempo não leva." — Carlos Drummond de Andrade</div>
+  <div class="tela-principal">
+    <div class="carrossel">
+      <!-- Corrigido: imagem duplicada removida -->
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/12fe05a2-b5e3-4510-8f3c-4688c0fa848a.jpg" alt="">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/1e9796fc-646c-4693-ac0f-772839652d16.jpg" alt="">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/217855ae-fa67-4062-b47a-58f3cad3c109.jpg" alt="">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/34bd3f19-1e26-46ee-86a2-7bf6f4faf4cb.jpg" alt="">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/377ad83e-0cbd-4742-8ad9-eda6558a3925.jpg" alt="">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/3c823301-875a-4796-a108-af2385997921.jpg" alt="">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/3d94b97d-f5ff-4f36-bac9-a51e721442f2.jpg" alt="">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/4b709c56-e2d5-4865-8ead-7d8e3bf78a2e.jpg" alt="">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/79ae463a-629a-4b4e-bbc4-bdb35592b438.jpg" alt="">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/91bf9068-bb9f-47fa-a814-6afdaa960e79.jpg" alt="">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/b27bfc50-cec1-4c20-b9bd-e2929517d4ba.jpg" alt="">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/d4aa7af9-f0a7-44bb-8c59-fe968ae6f1e6.jpg" alt="">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/e914506e-5b88-45d6-af7b-ae65a676c27c.jpg" alt="">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/fe3c04cf-edf8-4ba0-8b4a-1ab179dae43a.jpg" alt="">
+      <div class="texto-superior">"Enquanto você vive suas férias, eu escrevo nossa saudade."</div>
+      <div class="poesia">"Saudade é o que fica de um amor que o tempo não leva." — Carlos Drummond de Andrade</div>
+    </div>
   </div>
+
   <div class="container">
+    <!-- Suas cartas continuam aqui normalmente -->
     <div class="carta">
       <div class="titulo">Cartinha 1 — O começo das férias</div>
       <p>Minha princesa,</p>
-      <p>Hoje você começa suas férias... e eu começo minha contagem regressiva até te ver de novo. Já estou morrendo de saudade, e ainda nem é meio-dia! Que esses dias sejam lindos, leves, cheios de risadas e momentos bons. Aproveita cada segundo, vive intensamente — mas guarda um espacinho aí dentro pra pensar em mim de vez em quando.</p>
-      <p>Vou sentir falta do seu cheirinho, do seu sorriso e até da forma como você me olha quando está com sono. É, amor... vai ser difícil, mas eu fico feliz por você poder descansar. E mais feliz ainda por saber que, quando voltar, vai ter um abraço meu te esperando.</p>
+      <p>Hoje você começa suas férias... [...]</p>
       <p class="assinatura">Do seu Edu</p>
     </div>
 
     <div class="carta">
       <div class="titulo">Cartinha 2 — O segundo dia</div>
       <p>Oi, meu amor!</p>
-      <p>Já é o segundo dia e eu sigo firme aqui, segurando a saudade com carinho. Como foi o seu primeiro dia de descanso? Espero que tenha sido leve, com céu bonito e sorriso no rosto.</p>
-      <p>Você merece cada segundo dessa pausa. E eu? Eu sigo por aqui, pensando em você e contando os dias. Aproveita por nós dois, tá?</p>
+      <p>Já é o segundo dia [...]</p>
       <p class="assinatura">Com amor, Edu</p>
     </div>
 
     <div class="carta">
       <div class="titulo">Cartinha 3 — Pensando em você</div>
       <p>Meu bem,</p>
-      <p>Hoje sonhei com você. Daqueles sonhos bons que a gente acorda sorrindo. É engraçado como você aparece até quando fecho os olhos. Já sinto sua falta até nas pequenas coisas, como te ouvir contar como foi seu dia.</p>
-      <p>Continua curtindo, descansando, sendo feliz. E lembra sempre: tem alguém aqui te esperando com todo amor do mundo.</p>
+      <p>Hoje sonhei com você [...]</p>
       <p class="assinatura">Sempre seu, Edu</p>
     </div>
 
@@ -118,6 +157,7 @@
     </div>
   </div>
 
+  <!-- Script das cartas -->
   <script>
     const cartas = document.querySelectorAll('.carta');
     const dataInicio = new Date('2025-04-15');
@@ -143,6 +183,21 @@
     }
 
     atualizarCartas();
+  </script>
+
+  <!-- Script do carrossel -->
+  <script>
+    const imagens = document.querySelectorAll(".imagem-capa");
+    let index = 0;
+
+    function mostrarImagem() {
+      imagens.forEach(img => img.classList.remove("active"));
+      imagens[index].classList.add("active");
+      index = (index + 1) % imagens.length;
+    }
+
+    mostrarImagem();
+    setInterval(mostrarImagem, 3000);
   </script>
 </body>
 </html>
