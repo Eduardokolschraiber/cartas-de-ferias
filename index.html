@@ -21,47 +21,46 @@
 
     .carrossel {
       position: relative;
+      width: 100%;
       max-width: 600px;
       height: 400px;
       margin: 0 auto 20px auto;
-      overflow: hidden;
       border-radius: 12px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
-      background-color: #eee; /* fundo suave para sombra */
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+      background-color: #ddd;
     }
 
     .imagem-capa {
-      display: none;
-      max-height: 100%;
-      max-width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
 
     .imagem-capa.active {
-      display: block;
+      opacity: 1;
     }
 
     .texto-superior, .poesia {
-      font-family: 'Georgia', serif;
+      font-family: Georgia, serif;
       color: #111;
-      font-weight: normal;
-      text-shadow: none;
+      font-style: italic;
+      max-width: 90%;
+      margin: 10px auto;
     }
 
     .texto-superior {
       font-size: 1.8rem;
-      margin: 10px auto;
-      max-width: 90%;
-      font-style: italic;
     }
 
     .poesia {
       font-size: 1.2rem;
       margin-bottom: 20px;
-      font-style: italic;
     }
 
     .container {
@@ -107,7 +106,7 @@
 <body>
   <div class="tela-principal">
     <div class="carrossel">
-      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/12fe05a2-b5e3-4510-8f3c-4688c0fa848a.jpg" alt="">
+      <img class="imagem-capa active" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/12fe05a2-b5e3-4510-8f3c-4688c0fa848a.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/1e9796fc-646c-4693-ac0f-772839652d16.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/217855ae-fa67-4062-b47a-58f3cad3c109.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/principal/34bd3f19-1e26-46ee-86a2-7bf6f4faf4cb.jpg" alt="">
@@ -139,13 +138,6 @@
       <p>Oi, meu amor!</p>
       <p>Já é o segundo dia [...]</p>
       <p class="assinatura">Com amor, Edu</p>
-    </div>
-
-    <div class="carta">
-      <div class="titulo">Cartinha 3 — Pensando em você</div>
-      <p>Meu bem,</p>
-      <p>Hoje sonhei com você [...]</p>
-      <p class="assinatura">Sempre seu, Edu</p>
     </div>
 
     <div class="navegacao">
