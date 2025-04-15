@@ -117,8 +117,7 @@
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/d4aa7af9-f0a7-44bb-8c59-fe968ae6f1e6.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/e914506e-5b88-45d6-af7b-ae65a676c27c.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/fe3c04cf-edf8-4ba0-8b4a-1ab179dae43a.jpg" alt="">
-      
-      <!-- ✅ Nova imagem adicionada -->
+      <!-- Nova imagem adicionada -->
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/WhatsApp%20Image%202025-04-12%20at%2016.57.09.jpeg" alt="">
     </div>
 
@@ -159,11 +158,4 @@
     const hoje = new Date();
     dataInicio.setHours(0, 0, 0, 0);
     hoje.setHours(0, 0, 0, 0);
-    const diasPassados = Math.floor((hoje - dataInicio) / (1000 * 60 * 60 * 24));
-
-    let cartaVisivel = 0;
-
-    function atualizarCartas() {
-      cartas.forEach((carta, index) => {
-        carta.style.display = index === cartaVisivel && index <= diasPassados ? '
-
+    const diasPassados =
