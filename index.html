@@ -149,6 +149,15 @@
       <p>Minha princesa,</p>
       <p>Hoje você começa suas férias... [...]</p>
       <p class="assinatura">Do seu Edu</p>
+
+      <!-- Player de áudio -->
+      <div class="audio-container">
+        <p><strong>Aperte o play e ouça junto com a carta, meu amor.</strong></p>
+        <audio controls>
+          <source src="CAMINHO-DA-SUA-MUSICA.mp3" type="audio/mp3">
+          Seu navegador não suporta a tag de áudio.
+        </audio>
+      </div>
     </div>
 
     <!-- Carta 2 -->
@@ -192,17 +201,8 @@
       exibirCarta(cartaVisivel);
     }
 
-    // Carrossel automático
-    const imagens = document.querySelectorAll('.imagem-capa');
-    let imagemAtual = 0;
-
-    function trocarImagem() {
-      imagens[imagemAtual].classList.remove('active');
-      imagemAtual = (imagemAtual + 1) % imagens.length;
-      imagens[imagemAtual].classList.add('active');
-    }
-
-    setInterval(trocarImagem, 3000);
+    // Inicialização
+    exibirCarta(cartaVisivel);
   </script>
 </body>
 </html>
