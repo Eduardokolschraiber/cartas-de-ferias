@@ -137,10 +137,13 @@
     <div class="carta">
       <div class="titulo">Cartinha 1 — O começo das férias</div>
       <p>Minha princesa,</p>
-      <p>Hoje você começa suas férias... [...]</p>
+      <p>Hoje você começa suas férias, e enquanto você vive esses dias incríveis, eu sigo aqui, contando as horas pra te ter de novo comigo. Eu sei que vai ser lindo e cheio de memórias boas, e é exatamente isso que desejo pra você: dias leves, risos soltos e uma saudade boa de mim.</p>
+      <p>Durante esse tempo, decidi escrever uma cartinha por dia. Assim, de algum jeito, continuo presente em cada amanhecer seu. E cada palavra que você ler será um pedacinho do meu coração, tentando diminuir a distância.</p>
+      <p>Que esse primeiro dia seja leve como brisa e doce como você.</p>
       <p class="assinatura">Do seu Edu</p>
       <div class="audio-container">
-        <p><strong>Aperte o play e ouça junto com a carta, meu amor.</strong></p>
+        <p><strong>Aperte o play e ouça junto com a carta, meu amor.</strong><br>
+        <em>(Abaixe um pouquinho o volume do celular antes de apertar o play 😊)</em></p>
         <audio id="audioPlayer" controls>
           <source src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/videoplayback.m4a" type="audio/mp4">
           Seu navegador não suporta áudio.
@@ -200,6 +203,12 @@
     }
 
     function mostrarCartaAtual(direcao) {
+      const audio = document.getElementById('audioPlayer');
+      if (audio && !audio.paused) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+
       const novaIndex = cartaVisivel + direcao;
       if (novaIndex >= 0 && novaIndex < cartas.length) {
         cartaVisivel = novaIndex;
@@ -210,7 +219,7 @@
     // Volume suave
     window.addEventListener('DOMContentLoaded', () => {
       const audio = document.getElementById('audioPlayer');
-      if (audio) audio.volume = 0.05; // Volume suave
+      if (audio) audio.volume = 0.05;
     });
   </script>
 </body>
