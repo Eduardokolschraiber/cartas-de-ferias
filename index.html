@@ -22,7 +22,7 @@
       position: relative;
       width: 100%;
       max-width: 360px;
-      height: 540px; /* Estilo story */
+      height: 640px;
       margin: 2rem auto 1rem;
       overflow: hidden;
       border: 4px solid #ccc;
@@ -60,12 +60,19 @@
 
     .carta {
       display: none;
+      opacity: 0;
+      transition: opacity 0.6s ease;
       margin: 2rem 0;
       padding: 1.5rem;
       background-color: #fff;
       border-top: 1px solid #ccc;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .carta.mostrar {
+      display: block;
+      opacity: 1;
     }
 
     .titulo {
@@ -103,7 +110,7 @@
 
     @media screen and (max-width: 480px) {
       .carrossel {
-        height: 420px;
+        height: 540px;
       }
 
       .texto-superior {
@@ -121,14 +128,6 @@
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/34bd3f19-1e26-46ee-86a2-7bf6f4faf4cb.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/377ad83e-0cbd-4742-8ad9-eda6558a3925.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/3c823301-875a-4796-a108-af2385997921.jpg" alt="">
-      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/3d94b97d-f5ff-4f36-bac9-a51e721442f2.jpg" alt="">
-      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/4b709c56-e2d5-4865-8ead-7d8e3bf78a2e.jpg" alt="">
-      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/79ae463a-629a-4b4e-bbc4-bdb35592b438.jpg" alt="">
-      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/91bf9068-bb9f-47fa-a814-6afdaa960e79.jpg" alt="">
-      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/b27bfc50-cec1-4c20-b9bd-e2929517d4ba.jpg" alt="">
-      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/d4aa7af9-f0a7-44bb-8c59-fe968ae6f1e6.jpg" alt="">
-      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/e914506e-5b88-45d6-af7b-ae65a676c27c.jpg" alt="">
-      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/fe3c04cf-edf8-4ba0-8b4a-1ab179dae43a.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/WhatsApp%20Image%202025-04-12%20at%2016.57.09.jpeg" alt="">
     </div>
     <div class="texto-superior">Enquanto você vive suas férias, eu escrevo nossa saudade.</div>
@@ -140,8 +139,6 @@
       <p>Minha princesa,</p>
       <p>Hoje você começa suas férias... [...]</p>
       <p class="assinatura">Do seu Edu</p>
-
-      <!-- Player de áudio -->
       <div class="audio-container">
         <p><strong>Aperte o play e ouça junto com a carta, meu amor.</strong></p>
         <audio id="audioPlayer" controls>
@@ -166,12 +163,13 @@
     </div>
 
     <div class="navegacao">
+      <button onclick="mostrarCartaAtual(-1)">&larr; Carta anterior</button>
       <button onclick="mostrarCartaAtual(1)">Próxima carta &rarr;</button>
     </div>
   </div>
 
   <script>
-    // Carrossel de imagens
+    // Carrossel
     const imagens = document.querySelectorAll(".imagem-capa");
     let index = 0;
 
@@ -189,24 +187,30 @@
     let cartaVisivel = -1;
 
     function exibirCarta(index) {
-      // Esconde cabeçalho e carrossel ao mostrar carta
       document.querySelector('.header').style.display = 'none';
+
       cartas.forEach((carta, i) => {
-        carta.style.display = i === index ? 'block' : 'none';
+        carta.classList.remove('mostrar');
+        carta.style.display = 'none';
+        if (i === index) {
+          carta.style.display = 'block';
+          setTimeout(() => carta.classList.add('mostrar'), 10);
+        }
       });
     }
 
     function mostrarCartaAtual(direcao) {
-      if (cartaVisivel + direcao < cartas.length) {
-        cartaVisivel += direcao;
+      const novaIndex = cartaVisivel + direcao;
+      if (novaIndex >= 0 && novaIndex < cartas.length) {
+        cartaVisivel = novaIndex;
         exibirCarta(cartaVisivel);
       }
     }
 
-    // Definir volume do player de áudio
+    // Volume suave
     window.addEventListener('DOMContentLoaded', () => {
       const audio = document.getElementById('audioPlayer');
-      if (audio) audio.volume = 0.2;
+      if (audio) audio.volume = 0.05; // Volume suave
     });
   </script>
 </body>
