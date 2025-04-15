@@ -50,19 +50,6 @@
       padding: 0 10px;
     }
 
-    .poesia {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1.1rem;
-      color: #111;
-      margin-bottom: 2rem;
-      text-shadow: 1px 1px 3px #eee;
-      padding: 0 10px;
-      max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
     .container {
       max-width: 700px;
       margin: 2rem auto;
@@ -130,9 +117,12 @@
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/d4aa7af9-f0a7-44bb-8c59-fe968ae6f1e6.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/e914506e-5b88-45d6-af7b-ae65a676c27c.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/fe3c04cf-edf8-4ba0-8b4a-1ab179dae43a.jpg" alt="">
+      
+      <!-- ✅ Nova imagem adicionada -->
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/WhatsApp%20Image%202025-04-12%20at%2016.57.09.jpeg" alt="">
     </div>
+
     <div class="texto-superior">Enquanto você vive suas férias, eu escrevo nossa saudade.</div>
-    <div class="poesia">"Saudade é o que fica de um amor que o tempo não leva." — Carlos Drummond de Andrade</div>
   </div>
 
   <div class="container">
@@ -175,34 +165,5 @@
 
     function atualizarCartas() {
       cartas.forEach((carta, index) => {
-        carta.style.display = index === cartaVisivel && index <= diasPassados ? 'block' : 'none';
-      });
-    }
-
-    function mostrarCartaAtual(direcao) {
-      const novaIndex = cartaVisivel + direcao;
-      if (novaIndex >= 0 && novaIndex <= diasPassados && novaIndex < cartas.length) {
-        cartaVisivel = novaIndex;
-        atualizarCartas();
-      }
-    }
-
-    atualizarCartas();
-  </script>
-
-  <script>
-    const imagens = document.querySelectorAll(".imagem-capa");
-    let index = 0;
-
-    function mostrarImagem() {
-      imagens.forEach(img => img.classList.remove("active"));
-      imagens[index].classList.add("active");
-      index = (index + 1) % imagens.length;
-    }
-
-    mostrarImagem();
-    setInterval(mostrarImagem, 3000);
-  </script>
-</body>
-</html>
+        carta.style.display = index === cartaVisivel && index <= diasPassados ? '
 
