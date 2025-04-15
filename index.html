@@ -117,7 +117,7 @@
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/d4aa7af9-f0a7-44bb-8c59-fe968ae6f1e6.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/e914506e-5b88-45d6-af7b-ae65a676c27c.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/fe3c04cf-edf8-4ba0-8b4a-1ab179dae43a.jpg" alt="">
-      <!-- Nova imagem adicionada -->
+      <!-- Nova imagem -->
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/WhatsApp%20Image%202025-04-12%20at%2016.57.09.jpeg" alt="">
     </div>
 
@@ -153,9 +153,43 @@
   </div>
 
   <script>
+    // CARREGAMENTO DAS CARTAS POR DATA
     const cartas = document.querySelectorAll('.carta');
-    const dataInicio = new Date('2025-04-15');
+    const dataInicio = new Date('2025-04-15'); // Dia de início das férias
     const hoje = new Date();
-    dataInicio.setHours(0, 0, 0, 0);
-    hoje.setHours(0, 0, 0, 0);
-    const diasPassados =
+    dataInicio.setHours(0,0,0,0);
+    hoje.setHours(0,0,0,0);
+    const diasDisponiveis = Math.floor((hoje - dataInicio) / (1000 * 60 * 60 * 24)) + 1;
+    let cartaVisivel = 0;
+
+    function exibirCarta(index) {
+      cartas.forEach((carta, i) => {
+        carta.style.display = (i === index && i < diasDisponiveis) ? 'block' : 'none';
+      });
+    }
+
+    function mostrarCartaAtual(direcao) {
+      const maxIndex = Math.min(cartas.length - 1, diasDisponiveis - 1);
+      cartaVisivel += direcao;
+      if (cartaVisivel < 0) cartaVisivel = 0;
+      if (cartaVisivel > maxIndex) cartaVisivel = maxIndex;
+      exibirCarta(cartaVisivel);
+    }
+
+    // Mostrar a primeira carta válida automaticamente
+    exibirCarta(0);
+
+    // CARROSSEL DE IMAGENS
+    const imagens = document.querySelectorAll('.imagem-capa');
+    let imagemAtual = 0;
+
+    function trocarImagem() {
+      imagens[imagemAtual].classList.remove('active');
+      imagemAtual = (imagemAtual + 1) % imagens.length;
+      imagens[imagemAtual].classList.add('active');
+    }
+
+    setInterval(trocarImagem, 3000);
+  </script>
+</body>
+</html>
