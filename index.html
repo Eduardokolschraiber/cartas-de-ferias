@@ -16,6 +16,16 @@
 
     .header {
       text-align: center;
+      position: relative;
+    }
+
+    .texto-superior {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: #000;
+      margin-top: 1rem;
+      text-shadow: 1px 1px 3px #eee;
+      padding: 0 10px;
     }
 
     .carrossel {
@@ -23,7 +33,7 @@
       width: 100%;
       max-width: 360px;
       height: 640px;
-      margin: 2rem auto 1rem;
+      margin: 1rem auto 0;
       overflow: hidden;
       border: 4px solid #ccc;
       border-radius: 16px;
@@ -43,13 +53,44 @@
       display: block;
     }
 
-    .texto-superior {
-      font-family: 'Great Vibes', cursive;
-      font-size: 2rem;
-      color: #000;
-      margin-top: 1rem;
-      text-shadow: 1px 1px 3px #eee;
-      padding: 0 10px;
+    .navegacao {
+      position: absolute;
+      bottom: 100px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .navegacao button {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: none;
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+    }
+
+    .navegacao button:hover {
+      background-color: #555;
+    }
+
+    .indicadores {
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    .indicadores span {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 0 5px;
+      background-color: #ccc;
+      border-radius: 50%;
+      transition: background-color 0.3s;
+    }
+
+    .indicadores span.ativo {
+      background-color: #111;
     }
 
     .container {
@@ -88,24 +129,8 @@
       font-style: italic;
     }
 
-    .navegacao {
-      text-align: center;
-      margin-top: 2rem;
-    }
-
-    .navegacao button {
-      padding: 0.6rem 1.2rem;
-      margin: 0 0.5rem;
-      font-size: 1rem;
-      border-radius: 6px;
-      border: none;
-      background-color: #333;
-      color: white;
-      cursor: pointer;
-    }
-
-    .navegacao button:hover {
-      background-color: #555;
+    .audio-container {
+      margin-top: 1.5rem;
     }
 
     @media screen and (max-width: 480px) {
@@ -116,11 +141,16 @@
       .texto-superior {
         font-size: 1.6rem;
       }
+
+      .navegacao {
+        bottom: 90px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="header">
+    <div class="texto-superior">Enquanto você vive suas férias, eu escrevo nossa saudade.</div>
     <div class="carrossel">
       <img class="imagem-capa active" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/12fe05a2-b5e3-4510-8f3c-4688c0fa848a.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/1e9796fc-646c-4693-ac0f-772839652d16.jpg" alt="">
@@ -129,21 +159,22 @@
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/377ad83e-0cbd-4742-8ad9-eda6558a3925.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/3c823301-875a-4796-a108-af2385997921.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/WhatsApp%20Image%202025-04-12%20at%2016.57.09.jpeg" alt="">
+      <div class="navegacao">
+        <button onclick="mostrarCartaAtual(1)">Comece por aqui</button>
+      </div>
     </div>
-    <div class="texto-superior">Enquanto você vive suas férias, eu escrevo nossa saudade.</div>
+    <div class="indicadores" id="indicadores"></div>
   </div>
 
   <div class="container">
     <div class="carta">
       <div class="titulo">Cartinha 1 — O começo das férias</div>
       <p>Minha princesa,</p>
-      <p>Hoje você começa suas férias, e enquanto você vive esses dias incríveis, eu sigo aqui, contando as horas pra te ter de novo comigo. Eu sei que vai ser lindo e cheio de memórias boas, e é exatamente isso que desejo pra você: dias leves, risos soltos e uma saudade boa de mim.</p>
-      <p>Durante esse tempo, decidi escrever uma cartinha por dia. Assim, de algum jeito, continuo presente em cada amanhecer seu. E cada palavra que você ler será um pedacinho do meu coração, tentando diminuir a distância.</p>
-      <p>Que esse primeiro dia seja leve como brisa e doce como você.</p>
+      <p>Hoje você começa suas férias, e meu coração começa a contar os dias para te reencontrar. Que você aproveite cada instante, cada detalhe, cada descanso merecido…</p>
+      <p>Só queria te lembrar que, mesmo distante, estou sempre aqui, pensando em você com carinho e mandando boas energias pra que tudo aí seja incrível. 💛</p>
       <p class="assinatura">Do seu Edu</p>
       <div class="audio-container">
-        <p><strong>Aperte o play e ouça junto com a carta, meu amor.</strong><br>
-        <em>(Abaixe um pouquinho o volume do celular antes de apertar o play 😊)</em></p>
+        <p><strong>Aperte o play e ouça junto com a carta, meu amor.<br>(abaixe um pouquinho o volume do celular antes 💖)</strong></p>
         <audio id="audioPlayer" controls>
           <source src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/videoplayback.m4a" type="audio/mp4">
           Seu navegador não suporta áudio.
@@ -152,33 +183,32 @@
     </div>
 
     <div class="carta">
-      <div class="titulo">Cartinha 2 — O segundo dia</div>
-      <p>Oi, meu amor!</p>
-      <p>Já é o segundo dia [...]</p>
-      <p class="assinatura">Com amor, Edu</p>
-    </div>
-
-    <div class="carta">
-      <div class="titulo">Cartinha 3 — Pensando em você</div>
-      <p>Meu bem,</p>
-      <p>Hoje sonhei com você [...]</p>
-      <p class="assinatura">Sempre seu, Edu</p>
-    </div>
-
-    <div class="navegacao">
-      <button onclick="mostrarCartaAtual(-1)">&larr; Carta anterior</button>
-      <button onclick="mostrarCartaAtual(1)">Próxima carta &rarr;</button>
+      <div class="titulo">Amanhã tem mais...</div>
+      <p style="text-align: center; font-size: 1.2rem;">Aguarde que amanhã tem mais, meu amor... 💌</p>
     </div>
   </div>
 
   <script>
     // Carrossel
     const imagens = document.querySelectorAll(".imagem-capa");
+    const indicadores = document.getElementById("indicadores");
     let index = 0;
+
+    imagens.forEach((_, i) => {
+      const dot = document.createElement("span");
+      if (i === 0) dot.classList.add("ativo");
+      indicadores.appendChild(dot);
+    });
+
+    const pontos = indicadores.querySelectorAll("span");
 
     function mostrarImagem() {
       imagens.forEach(img => img.classList.remove("active"));
+      pontos.forEach(p => p.classList.remove("ativo"));
+
       imagens[index].classList.add("active");
+      pontos[index].classList.add("ativo");
+
       index = (index + 1) % imagens.length;
     }
 
@@ -192,6 +222,12 @@
     function exibirCarta(index) {
       document.querySelector('.header').style.display = 'none';
 
+      const audio = document.getElementById('audioPlayer');
+      if (audio && !audio.paused) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+
       cartas.forEach((carta, i) => {
         carta.classList.remove('mostrar');
         carta.style.display = 'none';
@@ -203,20 +239,13 @@
     }
 
     function mostrarCartaAtual(direcao) {
-      const audio = document.getElementById('audioPlayer');
-      if (audio && !audio.paused) {
-        audio.pause();
-        audio.currentTime = 0;
-      }
-
       const novaIndex = cartaVisivel + direcao;
-      if (novaIndex >= 0 && novaIndex < cartas.length) {
+      if (novaIndex === 0 || novaIndex === 1) {
         cartaVisivel = novaIndex;
         exibirCarta(cartaVisivel);
       }
     }
 
-    // Volume suave
     window.addEventListener('DOMContentLoaded', () => {
       const audio = document.getElementById('audioPlayer');
       if (audio) audio.volume = 0.05;
