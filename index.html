@@ -134,6 +134,7 @@
   </div>
 
   <div class="container">
+    <!-- Carta 1 -->
     <div class="carta">
       <div class="titulo">Cartinha 1 — O começo das férias</div>
       <p>Minha princesa,</p>
@@ -141,6 +142,7 @@
       <p class="assinatura">Do seu Edu</p>
     </div>
 
+    <!-- Carta 2 -->
     <div class="carta">
       <div class="titulo">Cartinha 2 — O segundo dia</div>
       <p>Oi, meu amor!</p>
@@ -148,6 +150,7 @@
       <p class="assinatura">Com amor, Edu</p>
     </div>
 
+    <!-- Carta 3 -->
     <div class="carta">
       <div class="titulo">Cartinha 3 — Pensando em você</div>
       <p>Meu bem,</p>
@@ -155,36 +158,32 @@
       <p class="assinatura">Sempre seu, Edu</p>
     </div>
 
+    <!-- Botões de navegação -->
     <div class="navegacao">
-      <button onclick="mostrarCartaAtual(-1)">&larr; Carta anterior</button>
       <button onclick="mostrarCartaAtual(1)">Próxima carta &rarr;</button>
     </div>
   </div>
 
   <script>
-    // Exibir cartas com base na data
     const cartas = document.querySelectorAll('.carta');
-    const dataInicio = new Date('2025-04-15');
-    const hoje = new Date();
-    dataInicio.setHours(0, 0, 0, 0);
-    hoje.setHours(0, 0, 0, 0);
-    const diasDisponiveis = Math.floor((hoje - dataInicio) / (1000 * 60 * 60 * 24)) + 1;
     let cartaVisivel = 0;
 
+    // Exibe a carta
     function exibirCarta(index) {
       cartas.forEach((carta, i) => {
-        carta.style.display = (i === index && i < diasDisponiveis) ? 'block' : 'none';
+        carta.style.display = (i === index) ? 'block' : 'none';
       });
     }
 
+    // Navegar entre as cartas
     function mostrarCartaAtual(direcao) {
-      const maxIndex = Math.min(cartas.length - 1, diasDisponiveis - 1);
       cartaVisivel += direcao;
       if (cartaVisivel < 0) cartaVisivel = 0;
-      if (cartaVisivel > maxIndex) cartaVisivel = maxIndex;
+      if (cartaVisivel >= cartas.length) cartaVisivel = cartas.length - 1;
       exibirCarta(cartaVisivel);
     }
 
+    // Iniciar com a primeira carta oculta
     exibirCarta(0);
 
     // Carrossel automático
@@ -196,11 +195,6 @@
       imagemAtual = (imagemAtual + 1) % imagens.length;
       imagens[imagemAtual].classList.add('active');
     }
-
-    setInterval(trocarImagem, 3000);
-  </script>
-</body>
-</html>
 
     setInterval(trocarImagem, 3000);
   </script>
