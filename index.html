@@ -28,6 +28,24 @@
       padding: 0 10px;
     }
 
+    .botao-inicial {
+      margin-top: 1rem;
+    }
+
+    .botao-inicial button {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: none;
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+    }
+
+    .botao-inicial button:hover {
+      background-color: #555;
+    }
+
     .carrossel {
       position: relative;
       width: 100%;
@@ -51,27 +69,6 @@
 
     .imagem-capa.active {
       display: block;
-    }
-
-    .navegacao {
-      position: absolute;
-      bottom: 100px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .navegacao button {
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
-      border-radius: 6px;
-      border: none;
-      background-color: #333;
-      color: white;
-      cursor: pointer;
-    }
-
-    .navegacao button:hover {
-      background-color: #555;
     }
 
     .indicadores {
@@ -133,6 +130,25 @@
       margin-top: 1.5rem;
     }
 
+    .proximo-botao {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .proximo-botao button {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: none;
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+    }
+
+    .proximo-botao button:hover {
+      background-color: #555;
+    }
+
     @media screen and (max-width: 480px) {
       .carrossel {
         height: 540px;
@@ -141,16 +157,15 @@
       .texto-superior {
         font-size: 1.6rem;
       }
-
-      .navegacao {
-        bottom: 90px;
-      }
     }
   </style>
 </head>
 <body>
   <div class="header">
     <div class="texto-superior">Enquanto você vive suas férias, eu escrevo nossa saudade.</div>
+    <div class="botao-inicial">
+      <button onclick="mostrarCartaAtual(1)">Comece por aqui</button>
+    </div>
     <div class="carrossel">
       <img class="imagem-capa active" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/12fe05a2-b5e3-4510-8f3c-4688c0fa848a.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/1e9796fc-646c-4693-ac0f-772839652d16.jpg" alt="">
@@ -159,9 +174,6 @@
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/377ad83e-0cbd-4742-8ad9-eda6558a3925.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/3c823301-875a-4796-a108-af2385997921.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/WhatsApp%20Image%202025-04-12%20at%2016.57.09.jpeg" alt="">
-      <div class="navegacao">
-        <button onclick="mostrarCartaAtual(1)">Comece por aqui</button>
-      </div>
     </div>
     <div class="indicadores" id="indicadores"></div>
   </div>
@@ -180,6 +192,9 @@
           Seu navegador não suporta áudio.
         </audio>
       </div>
+      <div class="proximo-botao">
+        <button onclick="mostrarCartaAtual(1)">Próxima carta</button>
+      </div>
     </div>
 
     <div class="carta">
@@ -189,7 +204,6 @@
   </div>
 
   <script>
-    // Carrossel
     const imagens = document.querySelectorAll(".imagem-capa");
     const indicadores = document.getElementById("indicadores");
     let index = 0;
@@ -215,7 +229,6 @@
     mostrarImagem();
     setInterval(mostrarImagem, 3000);
 
-    // Cartas
     const cartas = document.querySelectorAll('.carta');
     let cartaVisivel = -1;
 
@@ -240,7 +253,7 @@
 
     function mostrarCartaAtual(direcao) {
       const novaIndex = cartaVisivel + direcao;
-      if (novaIndex === 0 || novaIndex === 1) {
+      if (novaIndex >= 0 && novaIndex < cartas.length) {
         cartaVisivel = novaIndex;
         exibirCarta(cartaVisivel);
       }
