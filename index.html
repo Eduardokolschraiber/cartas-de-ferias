@@ -164,7 +164,7 @@
   <div class="header">
     <div class="texto-superior">Enquanto você vive suas férias, eu escrevo nossa saudade.</div>
     <div class="botao-inicial">
-      <button onclick="mostrarCartaAtual(0)">Comece por aqui</button>
+      <button onclick="iniciarCartas()">Comece por aqui</button>
     </div>
     <div class="carrossel">
       <img class="imagem-capa active" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/12fe05a2-b5e3-4510-8f3c-4688c0fa848a.jpg" alt="Imagem de capa 1">
@@ -182,7 +182,6 @@
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/WhatsApp%20Image%202025-04-13%20at%2022.53.28.jpeg" alt="Imagem de capa 13">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/WhatsApp%20Image%202025-04-13%20at%2022.53.38.jpeg" alt="Imagem de capa 14">
     </div>
-    <div id="indicadores" class="indicadores"></div>
   </div>
 
   <div id="cartinha1" class="carta">
@@ -268,7 +267,17 @@
       if (novaIndex >= 0 && novaIndex < cartas.length) {
         cartaVisivel = novaIndex;
         exibirCarta(cartaVisivel);
+
+        if (cartaVisivel === 1) {
+          document.querySelector('.mensagem-amanha').style.display = 'block';
+        } else {
+          document.querySelector('.mensagem-amanha').style.display = 'none';
+        }
       }
+    }
+
+    function iniciarCartas() {
+      exibirCarta(0);
     }
 
     window.addEventListener('DOMContentLoaded', () => {
