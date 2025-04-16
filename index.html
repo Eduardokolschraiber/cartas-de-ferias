@@ -6,63 +6,57 @@
   <title>Cartas de Férias</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
       font-family: 'Georgia', serif;
-      color: #fff;
-      background-image: url('https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/ChatGPT%20Image%2015%20de%20abr.%20de%202025,%2020_03_30.png');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+      background-color: #fdfdfc;
+      color: #111;
+      margin: 0;
+      padding: 0;
     }
 
-    .overlay {
-      background: rgba(0, 0, 0, 0.35);
-      min-height: 100vh;
-      padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
+    .header {
+      text-align: center;
+      position: relative;
     }
 
     .texto-superior {
       font-family: 'Great Vibes', cursive;
       font-size: 2rem;
-      text-align: center;
-      margin-bottom: 1.5rem;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+      color: #000;
+      margin-top: 1rem;
+      text-shadow: 1px 1px 3px #eee;
+      padding: 0 10px;
     }
 
     .botao-inicial {
-      background-color: rgba(255, 255, 255, 0.15);
-      border: 1px solid #fff;
-      padding: 0.8rem 1.5rem;
-      font-size: 1.1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      color: white;
-      margin-bottom: 2rem;
-      transition: background-color 0.3s;
+      margin-top: 1rem;
     }
 
-    .botao-inicial:hover {
-      background-color: rgba(255, 255, 255, 0.25);
+    .botao-inicial button {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: none;
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+    }
+
+    .botao-inicial button:hover {
+      background-color: #555;
     }
 
     .carrossel {
+      position: relative;
       width: 100%;
       max-width: 360px;
-      height: 600px;
-      position: relative;
-      margin-bottom: 1rem;
-      border-radius: 12px;
+      height: 640px;
+      margin: 1rem auto 0;
       overflow: hidden;
+      border: 4px solid #ccc;
+      border-radius: 16px;
+      background-color: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .imagem-capa {
@@ -70,43 +64,60 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 12px;
     }
 
     .imagem-capa.active {
       display: block;
     }
 
-    .pontinhos {
-      display: flex;
-      justify-content: center;
+    .indicadores {
+      text-align: center;
       margin-top: 0.5rem;
-      gap: 6px;
     }
 
-    .ponto {
+    .indicadores span {
+      display: inline-block;
       width: 10px;
       height: 10px;
-      background-color: rgba(255, 255, 255, 0.6);
+      margin: 0 5px;
+      background-color: #ccc;
       border-radius: 50%;
+      transition: background-color 0.3s;
+    }
+
+    .indicadores span.ativo {
+      background-color: #111;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
 
     .carta {
       display: none;
-      max-width: 700px;
-      text-align: left;
-      animation: fadeIn 0.6s ease forwards;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
 
     .carta.mostrar {
       display: block;
+      opacity: 1;
     }
 
     .titulo {
       font-weight: bold;
-      font-size: 1.6rem;
+      font-size: 1.3rem;
       margin-bottom: 1rem;
       text-align: center;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
     }
 
     .assinatura {
@@ -115,105 +126,104 @@
       font-style: italic;
     }
 
-    .navegacao {
-      text-align: center;
-      margin-top: 2rem;
+    .audio-container {
+      margin-top: 1.5rem;
     }
 
-    .navegacao button {
+    .proximo-botao {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .proximo-botao button {
       padding: 0.6rem 1.2rem;
-      margin: 0 0.5rem;
       font-size: 1rem;
       border-radius: 6px;
       border: none;
-      background-color: rgba(255, 255, 255, 0.15);
+      background-color: #333;
       color: white;
       cursor: pointer;
-      transition: background-color 0.3s;
     }
 
-    .navegacao button:hover {
-      background-color: rgba(255, 255, 255, 0.3);
-    }
-
-    audio {
-      width: 100%;
-      margin-top: 1rem;
-    }
-
-    .audio-aviso {
-      font-size: 0.9rem;
-      font-style: italic;
-      margin-top: 1rem;
-      text-align: center;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .proximo-botao button:hover {
+      background-color: #555;
     }
 
     @media screen and (max-width: 480px) {
-      .texto-superior {
-        font-size: 1.6rem;
+      .carrossel {
+        height: 540px;
       }
 
-      .carrossel {
-        height: 480px;
+      .texto-superior {
+        font-size: 1.6rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="overlay">
+  <div class="header">
     <div class="texto-superior">Enquanto você vive suas férias, eu escrevo nossa saudade.</div>
-
-    <button class="botao-inicial" onclick="mostrarCartaAtual(0)">Comece por aqui</button>
-
+    <div class="botao-inicial">
+      <button onclick="mostrarCartaAtual(1)">Comece por aqui</button>
+    </div>
     <div class="carrossel">
       <img class="imagem-capa active" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/12fe05a2-b5e3-4510-8f3c-4688c0fa848a.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/1e9796fc-646c-4693-ac0f-772839652d16.jpg" alt="">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/217855ae-fa67-4062-b47a-58f3cad3c109.jpg" alt="">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/34bd3f19-1e26-46ee-86a2-7bf6f4faf4cb.jpg" alt="">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/377ad83e-0cbd-4742-8ad9-eda6558a3925.jpg" alt="">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/3c823301-875a-4796-a108-af2385997921.jpg" alt="">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/WhatsApp%20Image%202025-04-12%20at%2016.57.09.jpeg" alt="">
     </div>
+    <div class="indicadores" id="indicadores"></div>
+  </div>
 
-    <div class="pontinhos">
-      <div class="ponto"></div>
-      <div class="ponto"></div>
-      <div class="ponto"></div>
+  <div id="cartinha1" class="carta">
+      <div class="titulo">Cartinha 1 — O começo das férias</div>
+      <p>Minha princesa,</p>
+      <p>Hoje você começa suas férias… e eu começo a minha contagem regressiva pra te ver de novo. Já estou morrendo de saudades! Que esses dias sejam lindos, leves, cheios de risadas e momentos inesquecíveis.</p>
+      <p>Por aqui já tô agarrado com aquele presente que tem seu cheirinho, vai ser minha companhia pra dormir esses dias amor rs.</p>
+      <p>Amorzão, fazer isso aqui foi um desafio… não sabia que ia dar tanto trabalho kkkk. <strong>Pensei que era só jogar no chatgpt essa miséraaa, mas não era não, daí azedo o capim no bucho kkk, mas deu tudo certo no final, bom, eu acho, espero que esteja lendo esse trem kkkk.</strong> Mas cada segundo valeu a pena só por saber que, mesmo de longe, consigo estar presente com você, nem que seja só um pouquinho, pela tela 😊.</p>
+      <p>Te amo demais. Um beijão em você e Heitor!</p>
+      <p class="assinatura">Do seu Edu 💙</p>
+
+      <div class="audio-aviso">Abaixe um pouquinho o volume do celular quando apertar o play 🎧</div>
+      <audio id="audioPlayer" controls>
+        <source src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/videoplayback.m4a" type="audio/mp4">
+        Seu navegador não suporta áudio.
+      </audio>
     </div>
-
-<div class="carta">
-  <div class="titulo">Cartinha 1 — O começo das férias</div>
-  <p>Minha princesa,</p>
-  <p>Hoje você começa suas férias… e eu começo a minha contagem regressiva pra te ver de novo. Já estou morrendo de saudades! Que esses dias sejam lindos, leves, cheios de risadas e momentos inesquecíveis.</p>
-  <p>Por aqui já tô agarrado com aquele presente que tem seu cheirinho, vai ser minha companhia pra dormir esses dias amor rs.</p>
-  <p>Amorzão, fazer isso aqui foi um desafio… não sabia que ia dar tanto trabalho kkkk. <strong>Pensei que era só jogar no chatgpt essa miséraaa, mas não era não, daí azedo o capim no bucho kkk, mas deu tudo certo no final, bom, eu acho, espero que esteja lendo esse trem kkkk.</strong> Mas cada segundo valeu a pena só por saber que, mesmo de longe, consigo estar presente com você, nem que seja só um pouquinho, pela tela 😊.</p>
-  <p>Te amo demais. Um beijão em você e Heitor!</p>
-  <p class="assinatura">Do seu Edu 💙</p>
-
-  <div class="audio-aviso">Abaixe um pouquinho o volume do celular quando apertar o play 🎧</div>
-  <audio id="audioPlayer" controls>
-    <source src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/videoplayback.m4a" type="audio/mp4">
-    Seu navegador não suporta áudio.
-  </audio>
-</div>
+      <div class="proximo-botao">
+        <button onclick="mostrarCartaAtual(1)">Próxima carta</button>
+      </div>
+    </div>
 
     <div class="carta">
-      <div class="titulo">Aguarde que amanhã tem mais, meu amor...</div>
-    </div>
-
-    <div class="navegacao">
-      <button onclick="mostrarCartaAtual(1)">Próxima carta &rarr;</button>
+      <div class="titulo">Amanhã tem mais...</div>
+      <p style="text-align: center; font-size: 1.2rem;">Aguarde que amanhã tem mais, meu amor... 💌</p>
     </div>
   </div>
 
   <script>
     const imagens = document.querySelectorAll(".imagem-capa");
+    const indicadores = document.getElementById("indicadores");
     let index = 0;
+
+    imagens.forEach((_, i) => {
+      const dot = document.createElement("span");
+      if (i === 0) dot.classList.add("ativo");
+      indicadores.appendChild(dot);
+    });
+
+    const pontos = indicadores.querySelectorAll("span");
 
     function mostrarImagem() {
       imagens.forEach(img => img.classList.remove("active"));
+      pontos.forEach(p => p.classList.remove("ativo"));
+
       imagens[index].classList.add("active");
+      pontos[index].classList.add("ativo");
+
       index = (index + 1) % imagens.length;
     }
 
@@ -224,6 +234,14 @@
     let cartaVisivel = -1;
 
     function exibirCarta(index) {
+      document.querySelector('.header').style.display = 'none';
+
+      const audio = document.getElementById('audioPlayer');
+      if (audio && !audio.paused) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+
       cartas.forEach((carta, i) => {
         carta.classList.remove('mostrar');
         carta.style.display = 'none';
@@ -232,12 +250,6 @@
           setTimeout(() => carta.classList.add('mostrar'), 10);
         }
       });
-
-      const audio = document.getElementById('audioPlayer');
-      if (audio && !audio.paused) {
-        audio.pause();
-        audio.currentTime = 0;
-      }
     }
 
     function mostrarCartaAtual(direcao) {
