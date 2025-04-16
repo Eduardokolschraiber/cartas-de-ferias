@@ -100,9 +100,8 @@
       display: none;
       opacity: 0;
       transition: opacity 0.6s ease;
-      margin: 2rem auto;
+      margin: 2rem 0;
       padding: 1.5rem;
-      max-width: 600px;
       background-color: #fff;
       border-top: 1px solid #ccc;
       border-radius: 8px;
@@ -127,27 +126,18 @@
       font-style: italic;
     }
 
-    .audio-aviso {
+    .audio-container {
       margin-top: 1.5rem;
-      text-align: center;
-      font-style: italic;
-      color: #666;
+    }
+
+    .proximo-botao {
+      display: none;
     }
 
     .proximo-botao-centralizado {
       display: block;
       margin: 2rem auto;
       text-align: center;
-    }
-
-    .proximo-botao-centralizado button {
-      padding: 0.5rem 1.2rem;
-      font-size: 1rem;
-      border-radius: 6px;
-      border: none;
-      background-color: #333;
-      color: white;
-      cursor: pointer;
     }
 
     .mensagem-amanha {
@@ -171,7 +161,7 @@
   </style>
 </head>
 <body>
-  <div class="header" id="header">
+  <div class="header">
     <div class="texto-superior">Enquanto você vive suas férias, eu escrevo nossa saudade.</div>
     <div class="botao-inicial">
       <button onclick="iniciarCartas()">Comece por aqui</button>
@@ -187,14 +177,11 @@
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/4b709c56-e2d5-4865-8ead-7d8e3bf78a2e.jpg" alt="Imagem de capa 8">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/79ae463a-629a-4b4e-bbc4-bdb35592b438.jpg" alt="Imagem de capa 9">
       <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/91bf9068-bb9f-47fa-a814-6afdaa960e79.jpg" alt="Imagem de capa 10">
-      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/ChatGPT%20Image%2015%20de%20abr.%20de%202025,%2020_03_30.png" alt="Imagem de capa 11">
-      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/WhatsApp%20Image%202025-04-12%20at%2016.57.09.jpeg" alt="Imagem de capa 12">
-      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/b27bfc50-cec1-4c20-b9bd-e2929517d4ba.jpg" alt="Imagem de capa 13">
-      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/d4aa7af9-f0a7-44bb-8c59-fe968ae6f1e6.jpg" alt="Imagem de capa 14">
-      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/e914506e-5b88-45d6-af7b-ae65a676c27c.jpg" alt="Imagem de capa 15">
-      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/fe3c04cf-edf8-4ba0-8b4a-1ab179dae43a.jpg" alt="Imagem de capa 16">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/WhatsApp%20Image%202025-04-12%20at%2016.57.09.jpeg" alt="Imagem de capa 11">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/b27bfc50-cec1-4c20-b9bd-e2929517d4ba.jpg" alt="Imagem de capa 12">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/d4aa7af9-f0a7-44bb-8c59-fe968ae6f1e6.jpg" alt="Imagem de capa 13">
+      <img class="imagem-capa" src="https://raw.githubusercontent.com/Eduardokolschraiber/cartas-de-ferias/main/e914506e-5b88-45d6-af7b-ae65a676c27c.jpg" alt="Imagem de capa 14">
     </div>
-    <div class="indicadores" id="indicadores"></div>
   </div>
 
   <div id="cartinha1" class="carta">
@@ -250,13 +237,14 @@
       index = (index + 1) % imagens.length;
     }
 
+    mostrarImagem();
     setInterval(mostrarImagem, 3000);
 
     const cartas = document.querySelectorAll('.carta');
     let cartaVisivel = -1;
 
     function exibirCarta(index) {
-      document.getElementById('header').style.display = 'none';
+      document.querySelector('.header').style.display = 'none';
 
       const audio = document.getElementById('audioPlayer');
       if (audio && !audio.paused) {
@@ -279,18 +267,12 @@
       if (novaIndex >= 0 && novaIndex < cartas.length) {
         cartaVisivel = novaIndex;
         exibirCarta(cartaVisivel);
+
+        if (cartaVisivel === 1) {
+          document.querySelector('.mensagem-amanha').style.display = 'block';
+        }
       }
     }
-
-    function iniciarCartas() {
-      cartaVisivel = 0;
-      exibirCarta(cartaVisivel);
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const audio = document.getElementById('audioPlayer');
-      if (audio) audio.volume = 0.05;
-    });
   </script>
 </body>
 </html>
